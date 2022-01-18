@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link rel="preconnect" href="https://fonts.gstatic.com"/>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wgt@400;500;700&display=swap" rel="stylesheet"/>
+		<title> This is a title	</title>
+		<style>
+			html{
+				font-size:65%;
+			}
+			*{
+				margin: 0;
+  				padding: 0;
+  				box-sizing: border-box;
+  				font-size:1.6rem;
+  				font-family: "Inter", sans-serif;
+  				line-height:1.4;
+			}
+			body{
+				background-color:#292929;
+			}
+
+			.container{
+
+			}
+
+			.brand-name{
+				display:flex;
+				align-items:center;
+				justify-content: center;
+				font-weight:500;
+				font-size:1.8rem;
+				vertical-align: middle;
+				color:#63e6be;
+				text-transform:uppercase;
+				transition: all 0.2s;
+				padding:10px;				
+			}
+			
+			.brand-name:hover{
+				color: #fff;
+  				text-shadow:
+      			0 0 7px #fff,
+      			0 0 10px #fff,
+      			0 0 21px #fff,
+      			0 0 42px #0fa,
+      			0 0 82px #0fa,
+      			0 0 92px #0fa,
+      			0 0 102px #0fa,
+     			0 0 151px #0fa;
+     			cursor:pointer;
+     			filter:blur(0.1px);
+			}
+			header{
+				padding:0 4.8rem;
+				height:9.6rem;
+				display:flex;
+				justify-content:space-between;
+				align-items:center;
+				background-color:#292929;
+				position:relative;
+			}
+
+			.nav-list{
+				list-style:none;
+				display:flex;
+				gap:4.8rem;
+				align-items:center;
+			}
+
+			.nav-element{
+				display: inline-block;
+				text-decoration: none;
+				color:white;
+				font-weight:500;
+				font-size:1.8rem;
+			}
+			.nav-cta{
+				padding: 1.6rem 3.2rem;
+				border-radius: 9px;
+			}
+
+
+			.gradient {
+  				position: relative;
+  				background-image: linear-gradient(41deg, rgba(99,230,190,1) 0%, rgba(99,230,190,1) 0%, rgba(0,117,255,1) 100%);
+  				z-index: 1;
+  				border-radius: 9px;
+  			}
+
+			.gradient::before {
+				position: absolute;
+				content: "";
+  				top: 0;
+  				right: 0;
+  				bottom: 0;
+  				left: 0;
+  				background-image: linear-gradient(41deg, rgba(156,25,65,1) 0%, rgba(255,138,0,1) 100%);
+  				z-index: -1;
+  				transition: opacity 0.1s linear;
+  				opacity: 0;
+  				border-radius: 9px;
+			}
+
+			.gradient:hover::before, .gradient:active::before {
+  				opacity: 1;
+			}
+
+		</style>
+	</head>
+	<body>
+		<header>
+			<div class="container"><span class=brand-name>Gradient Transition</span></div>
+			<nav class="header-nav">
+				<ul class="nav-list">
+					<li><a class="nav-element" href="#">Home</a></li>
+					<li><a class="nav-element" href="#">About</a></li>
+					<li><a class="nav-element nav-cta gradient" href="#">Sign Up</a></li>
+				</ul>
+			</nav>
+		</header>
+	</body>
+</html>
