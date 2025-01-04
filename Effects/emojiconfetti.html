@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Emoji Confetti</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f7f7f7;
+      }
+      #emojiButton {
+        font-size: 2rem;
+        padding: 20px 40px;
+        background-color: #ffcc00;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      #emojiButton:hover {
+        background-color: #ff9900;
+      }
+      .emoji {
+        position: absolute;
+        font-size: 2rem;
+        animation: burst 1s forwards;
+      }
+      @keyframes burst {
+        0% {
+          opacity: 1;
+          transform: translate(0, 0);
+        }
+        100% {
+          opacity: 0;
+          transform: translate(var(--x), var(--y));
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <button id="emojiButton">🎉 Click Me! 🎉</button>
+
+    <script>
+      document
+        .getElementById("emojiButton")
+        .addEventListener("click", function (e) {
+          for (let i = 0; i < 30; i++) {
+            let emoji = document.createElement("span");
+            emoji.classList.add("emoji");
+            emoji.textContent = "😽"; // The emoji for confetti
+
+            // Set random positions and animation directions
+            let x = (Math.random() - 0.5) * 500; // Random X direction
+            let y = (Math.random() - 0.5) * 500; // Random Y direction
+            emoji.style.setProperty("--x", `${x}px`);
+            emoji.style.setProperty("--y", `${y}px`);
+
+            // Append to the body and remove after animation
+            document.body.appendChild(emoji);
+            setTimeout(() => {
+              emoji.remove();
+            }, 1000); // Remove after the animation ends
+          }
+        });
+    </script>
+  </body>
+</html>

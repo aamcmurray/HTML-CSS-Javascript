@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Letter Hover Animation</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+      }
+
+      .word {
+        display: flex;
+        font-size: 5rem;
+        font-weight: bold;
+      }
+
+      .letter {
+        display: inline-block;
+        transition: transform 0.3s ease;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="word">
+      <span class="letter">H</span>
+      <span class="letter">E</span>
+      <span class="letter">L</span>
+      <span class="letter">L</span>
+      <span class="letter">O</span>
+    </div>
+  </body>
+  <script>
+    const letters = document.querySelectorAll(".letter"); // All the letter spans
+    const word = document.querySelector(".word"); // The parent container of the letters
+
+    // Function to handle hover effect
+    function handleHover(event) {
+      const index = Array.from(letters).indexOf(event.target); // Find the index of the hovered letter
+
+      // Loop through each letter and apply the transform effect
+      letters.forEach((letter, i) => {
+        // Reset all letters to normal position first
+        letter.style.transform = "translateY(0)";
+      });
+
+      // Apply hover effect to the hovered letter and its neighbors
+      if (index > 0) {
+        letters[index - 1].style.transform = "translateY(-5px)"; // Previous letter (partially raised)
+      }
+      letters[index].style.transform = "translateY(-10px)"; // Current letter (fully raised)
+      if (index < letters.length - 1) {
+        letters[index + 1].style.transform = "translateY(-5px)"; // Next letter (partially raised)
+      }
+    }
+
+    // Add event listeners for mouseenter and mouseleave
+    letters.forEach((letter) => {
+      letter.addEventListener("mouseenter", handleHover); // When mouse enters a letter
+      letter.addEventListener("mouseleave", () => {
+        // When mouse leaves a letter
+        letters.forEach((l) => (l.style.transform = "translateY(0)")); // Reset all letters
+      });
+    });
+  </script>
+</html>
